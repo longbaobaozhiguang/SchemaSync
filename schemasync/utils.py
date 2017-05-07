@@ -4,7 +4,7 @@ import re
 import os
 import datetime
 import glob
-import cStringIO
+import StringIO
 
 # REGEX_NO_TICKS = re.compile('`')
 # REGEX_INT_SIZE = re.compile('int\(\d+\)')
@@ -110,7 +110,7 @@ class PatchBuffer(object):
 
     def __init__(self, name, filters, tpl, ctx, version_filename=False):
         """Inits the PatchBuffer class"""
-        self._buffer = cStringIO.StringIO()
+        self._buffer = StringIO.StringIO()
         self.name = name
         self.filters = filters
         self.tpl = tpl
@@ -138,7 +138,7 @@ class PatchBuffer(object):
 
         self.ctx['data'] = data
 
-        fh.write(self.tpl % self.ctx)
+        fh.write((self.tpl % self.ctx).encode('utf-8'))
         fh.close()
 
         return True

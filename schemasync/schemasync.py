@@ -218,7 +218,8 @@ def app(sourcedb='', targetdb='', version_filename=False,
         return 1
 
     # data transformation filters
-    filters = (lambda d: utils.REGEX_MULTI_SPACE.sub(' ', d),
+    # lambda d: utils.REGEX_MULTI_SPACE.sub(' ', d),
+    filters = (
                lambda d: utils.REGEX_DISTANT_SEMICOLIN.sub(';', d),
                lambda d: utils.REGEX_SEMICOLON_EXPLODE_TO_NEWLINE.sub(";\n", d))
 
